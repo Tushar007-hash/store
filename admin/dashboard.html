@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Admin - Products</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="admin.css">
+</head>
+<body data-page="dashboard" class="admin">
+  <header class="a-top">
+    <strong class="a-brand">Admin</strong>
+    <nav><a href="../index.html" target="_blank">View store</a><span id="who" class="muted small"></span><button class="link-btn" id="logout">Sign out</button></nav>
+  </header>
+  <main class="a-wrap">
+    <div id="notice"></div>
+    <section class="stats" id="stats"></section>
+    <div class="toolbar">
+      <input id="q" type="search" placeholder="Search products" aria-label="Search products">
+      <button class="btn" id="add-btn">Add product</button>
+    </div>
+    <div class="table-wrap"><table>
+      <thead><tr><th></th><th>Product</th><th>Category</th><th>Price</th><th>Stock</th><th></th></tr></thead>
+      <tbody id="rows"><tr><td colspan="6" class="muted">Loading…</td></tr></tbody>
+    </table></div>
+  </main>
+
+  <dialog id="dlg">
+    <form id="pform">
+      <div class="dlg-head"><h2 id="dlg-title">Add product</h2><button type="button" class="link-btn" id="cancel-x" aria-label="Close">Close</button></div>
+      <div class="fields">
+        <label class="full">Product name<input id="f-name" required maxlength="140"></label>
+        <label>Category<select id="f-cat" required></select></label>
+        <label>Stock quantity<input id="f-stock" type="number" min="0" step="1" value="10" required></label>
+        <label>Selling price (₹)<input id="f-price" type="number" min="1" step="1" required></label>
+        <label>Original price / MRP (₹)<input id="f-mrp" type="number" min="0" step="1" placeholder="Optional"></label>
+        <label class="full">Description<textarea id="f-desc" rows="4"></textarea></label>
+        <label class="full">Highlights <small>(one per line)</small><textarea id="f-hl" rows="3"></textarea></label>
+        <div class="full">
+          <span class="lbl">Images <small>(first image is the main one)</small></span>
+          <div id="imgs" class="imgs"></div>
+          <div class="img-add">
+            <label class="file-btn">Upload images<input id="f-files" type="file" accept="image/*" multiple hidden></label>
+            <input id="f-url" type="url" placeholder="or paste an image URL"><button type="button" class="btn-sm" id="add-url">Add</button>
+          </div>
+          <p id="up-status" class="muted small"></p>
+        </div>
+        <label class="check full"><input id="f-feat" type="checkbox"> Show in “Featured” on the home page</label>
+      </div>
+      <p id="form-err" class="err" role="alert"></p>
+      <div class="dlg-foot"><button type="button" class="btn-sm" id="cancel">Cancel</button><button class="btn" id="save">Save product</button></div>
+    </form>
+  </dialog>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/db.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

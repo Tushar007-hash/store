@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Admin sign in</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css"><link rel="stylesheet" href="admin.css">
+</head>
+<body data-page="login" class="admin login-page">
+  <main class="login-card">
+    <h1>Admin sign in</h1>
+    <p class="muted">Manage your products and orders.</p>
+    <form id="login-form">
+      <label>Email<input type="email" id="email" autocomplete="username" required></label>
+      <label>Password<input type="password" id="password" autocomplete="current-password" required></label>
+      <p id="err" class="err" role="alert"></p>
+      <button class="btn block" id="go">Sign in</button>
+    </form>
+    <p class="muted small"><a href="../index.html">Back to store</a></p>
+  </main>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/db.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

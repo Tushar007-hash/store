@@ -1,0 +1,22 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Only YOUR account may change data. Paste your admin user's UID below
+    // (Firebase console > Authentication > Users > copy "User UID").
+    function isAdmin() {
+      return request.auth != null && request.auth.uid == "PASTE_ADMIN_UID";
+    }
+
+    // Everyone can read products. Only the admin can add, edit or delete them.
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Everything else is locked until later phases add rules for it.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
